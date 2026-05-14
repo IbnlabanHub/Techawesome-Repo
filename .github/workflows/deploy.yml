@@ -18,13 +18,19 @@
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd /var/www/deployedCICD-app
+          npm install
 
       - name: Run tests
-        run: npm run test --if-present
+        run: |
+          cd /var/www/deployedCICD-app
+          npm run test --if-present
 
       - name: Build Next.js app
-        run: npm run build
+        run: |
+          cd /var/www/deployedCICD-app
+          npm run build
 
       - name: Deploy to EC2 via SSH
         uses: appleboy/ssh-action@v1.0.0
